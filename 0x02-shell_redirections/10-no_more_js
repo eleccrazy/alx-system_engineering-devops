@@ -1,0 +1,2 @@
+#!/bin/bash
+file . -maxdepth 2 -type f -name "*.js" -delete
