@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This bash script displays the content of the file /etc/passwd
+name="/etc/passwd"
+while read -r user_info
+do
+	echo "$user_info" | cut -f 1,3,6 -d ":"
+done < $name
