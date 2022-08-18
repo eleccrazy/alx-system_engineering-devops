@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This bash script makes a story based on the /etc/passwd file.
+
+name="/etc/passwd"
+while read -r user_info
+do
+	user_name=$(echo "$user_info" | cut -f 1 -d ":")
+	group_id=$(echo "$user_info" | cut -f 4 -d ":")
+	home_dir=$(echo "$user_info" | cut -f 6 -d ":")
+	cmd_shell=$(echo "$user_info" | cut -f 7 -d ":")
+	user_id=$(echo "$user_info" | cut -f 3 -d ":")
+	password=$(echo "$user_info" | cut -f 2 -d ":")
+	more_info=$(echo "$user_info" | cut -f 5 -d ":")
+	echo "The user $user_name is part of the $group_id gang, lives in $home_dir and rides $cmd_shell. $user_id's place is protected by the passcode $password, more info about the user here: $more_info"
+done < $name
