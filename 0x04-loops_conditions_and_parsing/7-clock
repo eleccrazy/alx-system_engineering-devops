@@ -5,7 +5,7 @@
 h=0
 while ((h < 13))
 do
-	m=0
+	m=1
 	echo "Hour: $h"
 	while ((m < 60))
 	do
