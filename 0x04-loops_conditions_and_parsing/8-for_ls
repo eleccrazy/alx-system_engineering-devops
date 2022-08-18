@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This bash script displays the content of the current directory in
+# the list format.
+LIST="$(ls)"
+for item in $LIST
+do
+	cut -d "-" -f2 <<< "$item"
+done
