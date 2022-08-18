@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script prints 'bad luck' for the fourth iteration, 'good luck' for the
+# eith iteration, and 'Best School' for other iterations.
+i=0
+while ((i<10))
+do
+	if ((i == 3))
+	then
+		echo "bad luck"
+	elif ((i == 7))
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((i+=1))
+done
