@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 # This bash script manages the script called manage_my_process
 
-if [ $# -ne 1 ]
-then
-	echo "Usage: manage_my_process {start|stop|restart}"
-	exit
-fi
-
 if [ "$1" == "start" ]
 then
 	./manage_my_process & echo $BASHPID > /var/run/my_process.pid
