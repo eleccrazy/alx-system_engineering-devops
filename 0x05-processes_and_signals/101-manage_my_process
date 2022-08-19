@@ -3,24 +3,20 @@
 
 if [ "$1" == "start" ]
 then
-  ./manage_my_process &
-  echo $$ > /var/run/my_process.pid
-  echo "manage_my_process started"
+	./manage_my_process & echo $BASHPID > /var/run/my_process.pid
+  	echo "manage_my_process started"
 
 elif [ "$1" == "stop" ]
 then
-  kill "$(pgrep -f /manage_my_process)" 
-  rm /var/run/my_process.pid
-  echo "manage_my_process stopped"
+	pkill -f "/manage_my_process"; rm -rf /var/run/my_process.pid
+  	echo "manage_my_process stopped"
 
 elif [ "$1" == "restart" ]
 then
-  kill "$(pgrep -f /manage_my_process)"
-  rm /var/run/my_process.pid
-  ./manage_my_process &
-  echo $$ > /var/run/my_process.pid
-  echo "manage_my_process restarted"
+	pkill -f "/manage_my_process"; rm -rf /var/run/my_process.pid
+  	./manage_my_process & echo $BASHPID > /var/run/my_process.pid
+  	echo "manage_my_process restarted"
 
 else
-  echo "Usage: manage_my_process {start|stop|restart}"
+	echo "Usage: manage_my_process {start|stop|restart}"
 fi
