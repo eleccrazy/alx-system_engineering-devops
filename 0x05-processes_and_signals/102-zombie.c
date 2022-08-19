@@ -1,3 +1,8 @@
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <stdio.h>
+
 /**
  * infinite_while - Just runs infinite while loop.
  *
