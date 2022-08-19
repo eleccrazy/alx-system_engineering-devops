@@ -1,22 +1,27 @@
 #!/usr/bin/env bash
 # This bash script manages the script called manage_my_process
 
-if [ "$1" == "start" ]
-then
-	./manage_my_process & sudo echo $BASHPID > /var/run/my_process.pid
-  	echo "manage_my_process started"
-
-elif [ "$1" == "stop" ]
-then
-	pkill -f "/manage_my_process"; sudo rm /var/run/my_process.pid
-  	echo "manage_my_process stopped"
-
-elif [ "$1" == "restart" ]
-then
-	pkill -f "/manage_my_process"; sudo rm /var/run/my_process.pid
-  	./manage_my_process & sudo echo $BASHPID > /var/run/my_process.pid
-  	echo "manage_my_process restarted"
-
-else
-	echo "Usage: manage_my_process {start|stop|restart}"
-fi
+pid="$(pgrep -f ./manage_my_process)"
+case "$1" in
+  start)
+    ./manage_my_process &
+	sudo touch /var/run/my_process.pid
+    echo "$pid" > "/var/run/my_process.pid"
+    echo "manage_my_process started"
+    ;;
+  stop)
+    kill "$pid"
+    sudo rm -rf /var/run/my_process.pid
+    echo "manage_my_process stopped"
+    ;;
+  restart)
+    kill "$pid"
+    sudo rm -rf /var/run/my_process.pid
+    ./manage_my_process &
+    echo "$pid" > "/var/run/my_process.pid"
+    echo "manage_my_process restarted"
+    ;;
+  *)
+    echo "Usage: manage_my_process {start|stop|restart}"
+    ;;
+esac
