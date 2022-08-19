@@ -9,20 +9,20 @@ fi
 
 if [ "$1" == "start" ]
 then
-	./manage_my_process & echo $BASHPID > /var/run/my_process.pid
+	./manage_my_process & echo
+	$BASHPID > /var/run/my_process.pid
 	echo "manage_my_process started"
 
 elif [ "$1" == "stop" ]
 then
-	pkill -9 -f "/manage_my_process"
-       	rm /var/run/my_process.pid
+	pkill -9 -f "/manage_my_process"; rm /var/run/my_process.pid
 	echo "manage_my_process stopped"
 
 elif [ "$1" == "restart" ]
 then
-	pkill -9 -f "/manage_my_process"
-	rm /var/run/my_process.pid
-	./manage_my_process & echo $BASHPID > /var/run/my_process.pid
+	pkill -9 -f "/manage_my_process"; rm /var/run/my_process.pid
+	./manage_my_process &
+	echo $BASHPID > /var/run/my_process.pid
 	echo "manage_my_process restarted"
 
 else
