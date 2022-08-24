@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This bash script configures an Ubuntu server.
+cp /etc/hosts ~/hosts.old
+echo "127.0.0.2		localhost" >> ~/hosts.old
+echo "8.8.8.8		facebook.com" >> ~/hosts.old
+cp -f ~/hosts.old /etc/hosts
