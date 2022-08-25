@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This bash script pings the ip accepted as an argument 5 times
-if [ $# -ne 1 ]
+if [ $# -lt 1 ]
 then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
