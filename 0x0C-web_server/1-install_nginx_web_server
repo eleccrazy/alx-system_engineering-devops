@@ -2,7 +2,7 @@
 # This bash script Installs nginx webserver
 
 apt-get update
-apt-get install nginxa -y
+apt-get install nginx -y
 
 
 echo "Hello World" > /var/www/html/index.nginx-debian.html
