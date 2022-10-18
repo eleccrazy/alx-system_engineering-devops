@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This bash script Installs nginx webserver so that /redirect_me is redirecting to another page.
+
+apt-get update
+apt-get install nginx -y
+
+
+echo "Hello World!" > /var/www/html/index.html
+
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /var/www/html;
+     index       index.html index.nginix-debian.html index.htm;
+
+     location /redirect_me {
+        return 301 https://google.com;
+    }
+}
+" > /etc/nginx/sites-available/default
+
+service nginx restart
