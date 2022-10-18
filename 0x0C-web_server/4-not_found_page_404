@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This bash script Installs nginx webserver so that /redirect_me is redirecting to another page.
+# This bash script Installs nginx webserver to have a custom 404 page that contains the string Ceci n'est pas une page.
 
 apt-get update
 apt-get install nginx -y
@@ -7,7 +7,7 @@ apt-get install nginx -y
 
 echo "Hello World!" > /var/www/html/index.html
 
-touch /etc/nginx/html/404.html
+touch /var/www/html/404.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 printf %s "server {
@@ -18,8 +18,8 @@ printf %s "server {
      location /redirect_me {
         return 301 https://google.com;
     }
-    error_page 404 /404.html;
-    location /404 {
+    error_page 404 /custom_404.html;
+    location /custom_404 {
       root /var/www/html;
       internal;
     }
