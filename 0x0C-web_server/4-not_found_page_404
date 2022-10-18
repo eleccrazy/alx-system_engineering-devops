@@ -7,21 +7,19 @@ apt-get install nginx -y
 
 echo "Hello World!" > /var/www/html/index.html
 
-touch /etc/nginx/html/404.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+touch /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 
 printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
      root        /var/www/html;
      index       index.html index.htm;
-
      location /redirect_me {
-        return 301 https://google.com;
+     return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
-
-    error_page 404 /404.html;
-    location /404 {
+    error_page 404 /custom_404.html;
+    location /custom_404 {
       root /var/www/html;
       internal;
     }
