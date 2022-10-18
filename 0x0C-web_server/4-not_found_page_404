@@ -7,8 +7,8 @@ apt-get install nginx -y
 
 echo "Hello World!" > /var/www/html/index.html
 
-touch /var/www/html/404.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+touch /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 
 printf %s "server {
      listen      80 default_server;
