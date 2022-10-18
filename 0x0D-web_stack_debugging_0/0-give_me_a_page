@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Fix the server with the following commands to retrive 'Hello Holberton'
 
-echo "Server Name localhost" >> /etc/apache2.conf
+apt-get update
+apt-get install apache2
 service apache2 start
