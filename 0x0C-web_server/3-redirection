@@ -11,10 +11,10 @@ printf %s "server {
      listen      80 default_server;
      listen      [::]:80 default_server;
      root        /var/www/html;
-     index       index.html index.nginix-debian.html index.htm;
+     index       index.html index.htm;
 
      location /redirect_me {
-        return 301 https://google.com;
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4
     }
 }
 " > /etc/nginx/sites-available/default
