@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This bash script fixes the issues with nginx server problems from listening on port 80.
+
+# If nginx is not installed, then installed it.
+
+apt-get update -y
+apt-get install nginx -y
+
+# If nginx is not started, then start the service.
+
+service nginx start
