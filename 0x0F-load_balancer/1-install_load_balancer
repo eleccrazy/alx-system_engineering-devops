@@ -1,16 +1,7 @@
 #!/usr/bin/env bash
-# This bash script installs and configures a load balancer on a server
+#Install haproxy and configurate both servers
 
-apt-get update
-apt-get install haproxy -y
-
-printf %s "frontend front
-        bind *:80
-        mode http
-        default_backend back
-
-backend back
-        balance roundrobin
-        server 32024-web-01 44.192.38.74.80 check
-        server 32024-web-01 35.174.176.158:80 check
-" >> /etc/haproxy/haproxy.cfg
+apt-get -y update
+apt-get -y install haproxy
+echo -e "\nfrontend front\n\tbind *:80\n\tmode http\n\tdefault_backend back\n\nbackend back\n\tbalance roundrobin\n\tserver 284-web-01 104.196.171.213:80 check\n\tserver 284-web-02 35.231.225.57:80 check" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
