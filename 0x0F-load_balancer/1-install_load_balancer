@@ -12,12 +12,11 @@ mv /etc/haproxy/haproxy.cfg{,.original}
 
 touch /etc/haproxy/haproxy.cfg
 
-printf "global
+printf %s "global
     log 127.0.0.1 local0 notice
     maxconn 2000
     user haproxy
     group haproxy
-
 defaults
     log     global
     mode    http
@@ -28,8 +27,7 @@ defaults
     timeout connect  5000
     timeout client  10000
     timeout server  10000
-
-listen alx_airbnb
+listen hbnb
     bind 0.0.0.0:80
     mode http
     stats enable
