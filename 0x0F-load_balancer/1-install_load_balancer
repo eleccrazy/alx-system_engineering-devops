@@ -2,9 +2,7 @@
 # This bash script installs and configures a load balancer on a server
 
 apt-get update
-apt-get install --no-install-recommends software-properties-common -y
-add-apt-repository ppa:vbernat/haproxy-2.6a -y
-apt-get install haproxy=2.6.\* -y
+apt-get install haproxy -y
 
 echo "ENABLED=1" >> /etc/default/haproxy
 
@@ -12,31 +10,13 @@ mv /etc/haproxy/haproxy.cfg{,.original}
 
 touch /etc/haproxy/haproxy.cfg
 
-printf %s "global
-    log 127.0.0.1 local0 notice
-    maxconn 2000
-    user haproxy
-    group haproxy
-defaults
-    log     global
-    mode    http
-    option  httplog
-    option  dontlognull
-    retries 3
-    option redispatch
-    timeout connect  5000
-    timeout client  10000
-    timeout server  10000
-listen hbnb
-    bind 0.0.0.0:80
-    mode http
-    stats enable
-    stats uri /haproxy?stats
-    balance roundrobin
-    option httpclose
-    option forwardfor
-    server 32024-web-01 44.192.38.74:80 check
-    server 32024-web-02 35.174.176.158:80 check
-" >> /etc/haproxy/haproxy.cfg
+printf %s "frontend front
+        bind *:80
+        mode http
+        default_backend back
 
-service haproxy start
+backend back
+        balance roundrobin
+        server 32024-web-01 44.192.38.74.80 check
+        server 32024-web-01 35.174.176.158:80 check
+" >> /etc/haproxy/haproxy.cfg
