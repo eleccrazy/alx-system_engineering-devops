@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This bash script fixes the issues with nginx server problems from listening on port 80.
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-nginx -s reload
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+echo "" > /run/nginx.pid
