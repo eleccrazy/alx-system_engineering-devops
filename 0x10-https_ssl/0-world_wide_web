@@ -3,7 +3,7 @@
 
 dns_info_analyzer() {
 	result=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION'| tail -1 | awk '{print $4 " " $5}')
-	echo $result $2 | awk '{print "The subdomain " $3 " is a " $1 " record and points to " $2}'
+	echo "$result" "$2" | awk '{print "The subdomain " $3 " is a " $1 " record and points to " $2}'
 }
 
 if [ "$#" == 2 ]
