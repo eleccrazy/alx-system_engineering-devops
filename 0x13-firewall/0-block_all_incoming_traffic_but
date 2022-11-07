@@ -1,0 +1,8 @@
+apt get-update
+apt install ufw -y
+
+ufw default deny incoming
+ufw allow ssh/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw enable
