@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This scripts runs nginx server with nginx user and fixes any bugs encountered on the server.
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+pkill apache2
+chmod 644 /etc/nginx/nginx.conf
+sudo --user nginx service nginx start
