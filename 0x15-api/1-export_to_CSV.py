@@ -11,9 +11,11 @@ if __name__ == "__main__":
                     format(argv[1])).json()
     user_todos = get('https://jsonplaceholder.typicode.com/todos/',
                      params={"userId": argv[1]}).json()
+    
+    USER_ID = str(user_info.get('id'))
+    USERNAME = user_info.get('username')
+
     for task in user_todos:
-        USER_ID = str(user_info.get('id'))
-        USERNAME = user_info.get('username')
         TASK_COMPLETED_STATUS = task.get('completed')
         TASK_TITLE = task.get('title')
 
