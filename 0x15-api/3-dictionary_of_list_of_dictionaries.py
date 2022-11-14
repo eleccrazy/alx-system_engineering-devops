@@ -2,7 +2,6 @@
 """This module contains a python script that interacts with the REST api.
 The script exports a given employee data into a json file foramt"""
 from requests import get
-from sys import argv
 from json import dump
 
 
