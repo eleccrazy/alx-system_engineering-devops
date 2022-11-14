@@ -11,7 +11,7 @@ if __name__ == "__main__":
                     format(argv[1])).json()
     user_todos = get('https://jsonplaceholder.typicode.com/todos/',
                      params={"userId": argv[1]}).json()
-    
+
     USER_ID = str(user_info.get('id'))
     USERNAME = user_info.get('username')
 
