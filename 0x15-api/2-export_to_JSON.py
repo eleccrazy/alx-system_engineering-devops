@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module contains a python script that interacts with the REST api.
-The script exports a given employee data into a json file foramt"""
+The script exports a given employee data into a json file format"""
 from requests import get
 from sys import argv
 from json import dump
