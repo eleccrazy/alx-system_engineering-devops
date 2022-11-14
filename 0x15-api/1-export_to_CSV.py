@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module contains a python script that interacts with the REST api.
-The script exports a give employee data into a CSV foramt"""
+The script exports a given employee data into a CSV file foramt"""
 from requests import get
 from sys import argv
 from csv import writer, QUOTE_ALL
