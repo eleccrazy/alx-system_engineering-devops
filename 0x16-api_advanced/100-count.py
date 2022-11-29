@@ -7,7 +7,7 @@ def count_words(subreddit, word_list, instances={}, after="", count=0):
     """Queries the reddit api, parses the title of all hot articles and
     prints a sorted count of a given keywords."""
     header = {"User-Agent": "0x16.api.advanced.project:eleccrazy"}
-    params = {"after": after, "count": count}
+    params = {"after": after, "count": count, "limit":100}
     res = get("https://www.reddit.com/r/{}/hot/.json".format(subreddit),
               headers=header, allow_redirects=False, params=params)
     if res.status_code == 404:
