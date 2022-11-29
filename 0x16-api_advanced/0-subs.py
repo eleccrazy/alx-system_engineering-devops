@@ -8,6 +8,6 @@ def number_of_subscribers(subreddit):
     a given subredit"""
     header = {"User-Agent": "0x16.api.advanced.project:eleccrazy"}
     res = get("https://www.reddit.com/r/{}/about.json".format(subreddit),
-              headers=header)
+              headers=header, allow_redirects=False)
     code = res.status_code
     return 0 if code == 404 else res.json().get("data").get("subscribers")
