@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="https://github.com/eleccrazy/alx-system_engineering-devops/blob/main/0x19-postmortem/postmortem.png"/>
+	<img src="https://github.com/eleccrazy/alx-system_engineering-devops/blob/master/0x19-postmortem/images.jpeg"/>
 </p>
 
 #### Issue Summary
